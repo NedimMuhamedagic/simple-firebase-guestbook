@@ -13,7 +13,8 @@
     "browser": true,                 // browser global variables
     "node": true,                    // Node.js global variables and Node.js-specific rules,
     "mocha": true,                   // Mocha variables (describe, it, beforeEach, etc),
-    "es6": true                      // Promise, Symbol, etc
+    "es6": true,                     // Promise, Symbol, etc,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
@@ -179,7 +180,7 @@
     "react/jsx-no-bind": [1, {
       "allowArrowFunctions": true
     }], // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-    "jsx-quotes": [2, "prefer-single"], // http://eslint.org/docs/rules/jsx-quotes
+    "jsx-quotes": 0, // http://eslint.org/docs/rules/jsx-quotes
     "react/display-name": 0,         // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
     "react/jsx-boolean-value": 2,    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
     "react/jsx-curly-spacing": [2, "always"], //https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
