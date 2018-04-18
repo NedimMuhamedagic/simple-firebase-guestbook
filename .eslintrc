@@ -1,11 +1,13 @@
 {
   "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
   "extends": [
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "plugins": [
     "react",                         // https://github.com/yannickcr/eslint-plugin-react
     "flowtype",                      // https://github.com/gajus/eslint-plugin-flowtype
+    "jsx-a11y"                       // https://github.com/evcohen/eslint-plugin-jsx-a11y
   ],
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "browser": true,                 // browser global variables
