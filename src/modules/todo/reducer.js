@@ -1,26 +1,15 @@
 // @flow
 import { TODO,  type TodoAction } from './actions';
 type State = {
-  value: string
+  todos: Object
 };
 
 const INITIAL_STATE = {
-  value: '',
   todos: {},
 };
 
 export default (state: Object = INITIAL_STATE, action: TodoAction): State => {
   switch (action.type) {
-  case TODO.SET_FORM_FIELD:
-    return {
-      ...state,
-      value: action.payload,
-    };
-  case TODO.CLEAR_FORM_FIELD:
-    return {
-      ...state,
-      value: '',
-    };
   case TODO.SET_TODO:
     return {
       ...state,
@@ -28,6 +17,12 @@ export default (state: Object = INITIAL_STATE, action: TodoAction): State => {
         ...state.todos,
         [action.payload.key]: action.payload,
       },
+    };
+  case TODO.DELETE_SUCCESS:
+    const { [action.payload]: _deletedTodo, ...otherTodos } = state.todos;
+    return {
+      ...state,
+      todos: otherTodos,
     };
   default:
     return state;

@@ -10,16 +10,20 @@ import {
   cancelled,
   fork,
   put,
+  select,
   take,
   takeLatest,
 } from 'redux-saga/effects';
 
 import { todoDB, updateRootDB } from '../../utils/firebase';
 import { TODO, todo as todoActions } from './actions';
+import { app as appActions } from '../app/actions';
 import { APP } from '../app/actions';
 import { BUFFER_SLIDING_AMT } from '../../utils/constants';
 
 export const todoListeners = {};
+
+const getTodos = (state: Object): Object => state.todoState.todos;
 
 function* watchAddTodo(): Generator<*, *, *> {
   yield takeLatest(TODO.ADD_TODO, onAddTodo);
@@ -29,9 +33,18 @@ function* watchFetchTodos(): Generator<*, *, *> {
   yield takeLatest(APP.INIT, getTodosAndCreateListeners);
 }
 
+function* watchUpdateTodo(): Generator<*, *, *> {
+  yield takeLatest(TODO.UPDATE_TODO, onUpdateTodo);
+}
+
+function* watchDeleteTodo(): Generator<*, *, *> {
+  yield takeLatest(TODO.DELETE_TODO, onDeleteTodo);
+}
+
 function* onAddTodo({ payload }: { payload: string }): Saga<void> {
   const newTodoKey = todoDB.getNextKey();
   const newTodo = {
+    done: false,
     content: payload,
     timestamp: Date.now(),
   };
@@ -40,7 +53,7 @@ function* onAddTodo({ payload }: { payload: string }): Saga<void> {
     [`todos/${ newTodoKey }`]: newTodo,
   };
   yield call(updateRootDB, { args: updates });
-  yield put(todoActions.clearFormField());
+  yield put(appActions.clearFormField('newTodo'));
 }
 
 function* getTodosAndCreateListeners(): any {
@@ -67,7 +80,7 @@ function* getTodosAndCreateListeners(): any {
       if (meta === 'add') {
         yield fork(createTodoListener, todoId);
       } else if (meta === 'remove') {
-        // yield put(todoActions.onDeleteSuccess(todoId));
+        yield put(todoActions.onDeleteSuccess(todoId));
       }
     }
   } finally {
@@ -102,7 +115,9 @@ export function* createTodoListener(
   try {
     while (true) {
       const { payload } = yield take(channel);
-      yield put(todoActions.setTodo( payload ));
+      if ( payload ) {
+        yield put(todoActions.setTodo( payload ));
+      }
     }
   } finally {
     if (yield cancelled()) {
@@ -112,8 +127,29 @@ export function* createTodoListener(
   }
 }
 
+function* onUpdateTodo({ payload }: { payload: Object }): any {
+  const { todoId, content, done } = payload;
+  const todos = yield select(getTodos);
+  const currentTodo = todos[todoId];
+  if ( !!content ) currentTodo.content = content;
+  if ( typeof done !== 'undefined' ) currentTodo.done = done;
+  if ( currentTodo ) {
+    const updates = {
+      [`${todoId}`]: currentTodo,
+    };
+    todoDB.update(null, updates);
+  }
+}
+
+function* onDeleteTodo({ payload }: { payload: Object }): any {
+  if ( payload ) {
+    todoDB.delete(payload);
+  }
+}
 
 export default [
   watchAddTodo,
   watchFetchTodos,
+  watchUpdateTodo,
+  watchDeleteTodo,
 ];

@@ -8,6 +8,18 @@
   justify-content: center;
 }
 
+#flex-row-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#flex-row-center-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 #flex-row-end-start {
   display: flex;
   align-items: flex-end;

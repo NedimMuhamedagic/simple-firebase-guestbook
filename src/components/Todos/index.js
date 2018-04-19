@@ -23,8 +23,8 @@ class Todos extends Component<TodosProps> {
             .map( (singleTodo: Object): ?React$Element<any> => (
               <Todo
                 content={ singleTodo.content }
-                done={ false }
-                editing={ false }
+                done={ singleTodo.done }
+                id={ singleTodo.id }
                 key={ singleTodo.key }
                 timestamp={ singleTodo.timestamp } />
             ))

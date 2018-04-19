@@ -90,6 +90,16 @@ img {
   align-items: center;
   justify-content: center; }
 
+#flex-row-start, .Todo, .Todo__actionContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start; }
+
+#flex-row-center-start, #todoStyle, .Todo__element, .Todo__action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; }
+
 #flex-row-end-start, .App {
   display: flex;
   align-items: flex-end;
@@ -118,23 +128,42 @@ img {
   border: none;
   padding: 0.5rem;
   font-size: 1.2rem;
+  line-height: 1.2rem;
   margin: 0;
-  transition: all 0.3s ease; }
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  height: 39px; }
 
 .Todo {
   position: relative;
   margin-bottom: 0.5rem;
-  max-width: 30rem; }
+  max-width: 40rem;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer; }
+  .Todo:hover, .Todo:focus {
+    color: #888888;
+    outline: none; }
   .Todo__element {
-    max-width: 20rem;
-    width: 100%; }
+    max-width: 28rem;
+    width: 100%;
+    outline: none; }
     .Todo__element:focus {
       background: none;
       outline: none; }
+    .Todo__element.done {
+      text-decoration: line-through;
+      color: #D62EB2; }
   .Todo__input {
     background: white;
     border: none;
-    color: #801CA2; }
+    color: #801CA2;
+    max-width: 28rem;
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    outline: none; }
     .Todo__input::placeholder {
       color: #50B0A6; }
     .Todo__input:focus {
