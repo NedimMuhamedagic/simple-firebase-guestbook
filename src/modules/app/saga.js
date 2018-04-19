@@ -5,21 +5,18 @@ import {
   type Saga,
 } from 'redux-saga';
 import {
+  call,
   take,
+  takeLatest,
 } from 'redux-saga/effects';
 import moment from 'moment';
 
 import { fireclass } from '../../firebase';
 import { appDB, updateRootDB } from '../../utils/firebase';
+import { BUFFER_SLIDING_AMT } from '../../utils/constants';
 
-import {
-  call,
-  takeLatest,
-} from 'redux-saga/effects';
 
 import { APP } from './actions';
-
-export const BUFFER_SLIDING_AMT = 10;
 
 let channel;
 let unixToday = moment()

@@ -158,8 +158,6 @@ class DB extends Emitter {
       timestamp: fireclass.database.ServerValue.TIMESTAMP,
     });
   }
-  // TODO[@sarahatwork] make a way to skip the change listener,
-  // since we don't always need it
   createListeners({ startAt, child, shouldLimitToLast } = {}, emitter) {
     let ref = this.dbRef.orderByChild('timestamp');
     if (child) {

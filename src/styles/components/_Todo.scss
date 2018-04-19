@@ -1,0 +1,45 @@
+#todoStyle {
+  font-weight: 300;
+  background: none;
+  border: none;
+  padding: $smallSpacing;
+  font-size: $fontLarge;
+  margin: 0;
+  transition: $mainTransition;
+}
+
+.Todo {
+  position: relative;
+  margin-bottom: $smallSpacing;
+  max-width: 30rem;
+  &__element {
+    @extend #todoStyle;
+    max-width: 20rem;
+    width: 100%;
+    &:focus {
+      background: none;
+      outline: none;
+    }
+  }
+  &__input {
+    background: white;
+    border: none;
+    color: $main;
+    &::placeholder {
+      color: $accent;
+    }
+    &:focus {
+      background: none;
+      outline: none;
+    }
+  }
+
+  &__action {
+    @extend #todoStyle;
+    cursor: pointer;
+    &:focus, &:hover {
+      outline: none;
+      color: $grey;
+    }
+  }
+}

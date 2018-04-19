@@ -2,13 +2,15 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import app from './modules/app/reducer';
+import appState from './modules/app/reducer';
+import todoState from './modules/todo/reducer';
 
 export const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   combineReducers({
-    app,
+    appState,
+    todoState,
   }),
   applyMiddleware(sagaMiddleware)
 );

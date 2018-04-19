@@ -2,6 +2,7 @@
 import DB from './database';
 export const rootDB = new DB();
 export const appDB = new DB({ path: 'app' });
+export const todoDB = new DB({ path: 'todos' });
 
 export const createToDoRef = (todoId: string): DB =>
   new DB({ path: `users/${todoId}`, keepSynced: true });

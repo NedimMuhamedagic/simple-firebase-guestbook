@@ -101,7 +101,47 @@ img {
   box-sizing: border-box; }
   .App__details {
     flex: 3;
-    padding: 1.2rem; }
+    padding: 1rem; }
   .App__content {
     flex: 7;
     height: 100vh; }
+
+.Todos {
+  padding: 1rem;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: scroll; }
+
+#todoStyle, .Todo__element, .Todo__action {
+  font-weight: 300;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin: 0;
+  transition: all 0.3s ease; }
+
+.Todo {
+  position: relative;
+  margin-bottom: 0.5rem;
+  max-width: 30rem; }
+  .Todo__element {
+    max-width: 20rem;
+    width: 100%; }
+    .Todo__element:focus {
+      background: none;
+      outline: none; }
+  .Todo__input {
+    background: white;
+    border: none;
+    color: #801CA2; }
+    .Todo__input::placeholder {
+      color: #50B0A6; }
+    .Todo__input:focus {
+      background: none;
+      outline: none; }
+  .Todo__action {
+    cursor: pointer; }
+    .Todo__action:focus, .Todo__action:hover {
+      outline: none;
+      color: #888888; }

@@ -2,6 +2,7 @@
 $fontExtra: 3rem;
 $font: 1rem;
 $fontSmall: 0.8rem;
+$fontLarge: 1.2rem;
 
 $h1: 2rem;
 $h2: 1.8rem;
@@ -10,14 +11,12 @@ $h4: 1.4rem;
 $h5: 1.2rem;
 
 $h3lh: 2rem;
-// Paddings
-$mainPadding: 1.2rem;
-$altPadding: 0.725rem;
-
-// Margins
-$mainMargin: 1rem;
-$smallMargin: 0.5rem;
-$xSmallMargin: 0.425rem;
+// Spacings
+$largeSpacing: 1.2rem;
+$spacing: 1rem;
+$altSpacing: 0.725rem;
+$smallSpacing: 0.5rem;
+$xSmallSpacing: 0.425rem;
 
 // Transitions
 $mainTransition: all .3s ease;
