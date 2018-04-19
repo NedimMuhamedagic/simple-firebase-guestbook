@@ -2,11 +2,15 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
+  "sasslintConfig": "./.sass-lint.yml",
   "dependencies": {
+    "babel-preset-env": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "events": "^2.0.0",
     "firebase": "^4.12.1",
     "moment": "^2.22.1",
+    "node-sass-chokidar": "^1.2.2",
+    "npm-run-all": "^4.1.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
@@ -15,21 +19,27 @@
     "redux-saga": "^0.16.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "babel src/ -d lib/",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "babel src/ -d lib/",
+    "build": "npm-run-all build-css build-js",
     "prepublish": "yarn run build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-plugin-flowtype": "^2.46.2",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.70.0"
+    "flow-bin": "^0.70.0",
+    "sass-lint": "^1.12.1"
   }
 }

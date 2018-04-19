@@ -1,0 +1,26 @@
+
+// Colors
+$whiteVintage: #FEFBF7;
+
+$main: #801CA2;
+$mainLight: #D62EB2;
+$alt: #EA1C31;
+$altLight: #FFD508;
+$accent: #50B0A6;
+
+$grey: #888888;
+
+#colorAlt,
+.colorAlt {
+  color: $alt;
+}
+
+#colorMain,
+.colorMain {
+  color: $main;
+}
+
+#colorAccent,
+.colorAccent {
+  color: $accent;
+}
