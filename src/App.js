@@ -1,27 +1,21 @@
 // @flow
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
 
-type AppProps = {};
+import store, { sagaMiddleware } from './store';
+import rootSaga from './sagas';
 
-class App extends Component<AppProps> {
-  render(): ?React$Element<any> {
+import App from './components/App';
+
+sagaMiddleware.run(rootSaga);
+
+class ToDo extends Component<any> { // eslint-disable-line
+  render(): Store {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img
-            alt="logo"
-            className="App-logo"
-            src={ logo } />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={ store }>
+        <App />
+      </Provider>
     );
   }
 }
-
-export default App;
+export default ToDo;
