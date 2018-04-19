@@ -1,5 +1,15 @@
-#flexcenter {
+// @NedimMuhamedagic:
+// Flexhelpers names are defined as
+// #flex-{direction}-{align-items}-{justify-content}
+
+#flex-row-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#flex-row-end-start {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start
 }

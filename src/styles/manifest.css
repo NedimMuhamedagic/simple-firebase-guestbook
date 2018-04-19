@@ -45,7 +45,7 @@ table {
 .colorAlt {
   color: #EA1C31; }
 
-#colorMain,
+#colorMain, .App__details h1,
 .colorMain {
   color: #801CA2; }
 
@@ -72,7 +72,7 @@ h4 {
   font-weight: 900;
   font-size: 1.4rem; }
 
-#extra {
+#fontExtra, .App__details h1 {
   font-size: 3rem;
   font-weight: 900; }
 
@@ -85,7 +85,23 @@ body {
 img {
   max-width: 100%; }
 
-#flexcenter {
+#flex-row-center {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+#flex-row-end-start, .App {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start; }
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box; }
+  .App__details {
+    flex: 3;
+    padding: 1.2rem; }
+  .App__content {
+    flex: 7;
+    height: 100vh; }

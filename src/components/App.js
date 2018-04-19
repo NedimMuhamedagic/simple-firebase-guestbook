@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { app as appActions } from '../modules/app/actions';
+import { en } from '../strings';
 
-import logo from './logo.svg';
-import './App.css';
+import Todos from './Todos/index.js';
 
 type AppProps = {
   initApp: Function
@@ -18,16 +18,14 @@ class App extends Component<AppProps> {
   render(): ?React$Element<any> {
     return (
       <div className="App">
-        <header className="App-header">
-          <img
-            alt="logo"
-            className="App-logo"
-            src={ logo } />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App__details">
+          <h2>{ en.APP.heading.intro }</h2>
+          <h1>{ en.APP.heading.appName }</h1>
+          <h2>{ en.APP.heading.postText }</h2>
+        </div>
+        <div className="App__content">
+          <Todos />
+        </div>
       </div>
     );
   }
