@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { user as userActions } from '../../modules/user/actions';
-import {en} from '../../strings/index';
+import { en } from '../../strings/index';
 
 type UserProps = {
   updateUser: Function,

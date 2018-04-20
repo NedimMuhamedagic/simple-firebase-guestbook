@@ -9,6 +9,7 @@ export const en = {
   USER: {
     add: 'Add',
     clear: 'Clear',
+    edit: 'Edit',
     delete: 'Delete',
     confirm: 'Confirm',
     cancel: 'Cancel',

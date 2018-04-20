@@ -12,7 +12,7 @@ type AppProps = {
 
 class App extends Component<AppProps> {
   componentDidMount() {
-    this.props.initApp({ loaded: true });
+    this.props.initApp(true);
   }
 
   render(): ?React$Element<any> {
