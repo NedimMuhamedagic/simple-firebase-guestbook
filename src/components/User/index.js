@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { user as userActions } from '../../modules/user/actions';
+import {en} from '../../strings/index';
 
 type UserProps = {
   updateUser: Function,
@@ -38,7 +39,6 @@ class User extends Component<UserProps, UserState> {
   render(): React$Element<"a"> | React$Element<"div"> {
     const { name, owner } = this.props;
     const { editing } = this.state;
-    // console.log( editing )
     return editing
       ? this.renderEditing()
       : (
@@ -57,12 +57,12 @@ class User extends Component<UserProps, UserState> {
                 <button
                   className="User__action colorAccent"
                   onClick={ this.handleToggleEditing }>
-                  Edit
+                  { en.USER.edit }
                 </button>
                 <button
                   className="User__action colorAlt"
                   onClick={ this.handleDeleteUser }>
-                  Delete
+                  { en.USER.delete }
                 </button>
               </div>
             )
@@ -85,12 +85,12 @@ class User extends Component<UserProps, UserState> {
           <button
             className="User__action colorAccent"
             onClick={ this.handleSubmit }>
-            Confirm
+            { en.USER.confirm }
           </button>
           <button
             className="User__action colorAlt"
             onClick={ this.handleCancelEditing }>
-            Cancel
+            { en.USER.cancel }
           </button>
         </div>
       </div>
@@ -117,11 +117,6 @@ class User extends Component<UserProps, UserState> {
     const { updateUser, id } = this.props;
     updateUser({ name: value, userId: id });
     this.handleCancelEditing();
-  }
-
-  handleSetDone = () => {
-    const { updateUser, id, done } = this.props;
-    updateUser({ done: !done, userId: id });
   }
 
   handleDeleteUser = () => {

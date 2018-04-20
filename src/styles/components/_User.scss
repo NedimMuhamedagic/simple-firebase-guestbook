@@ -37,10 +37,6 @@
       background: none;
       outline: none;
     }
-    &.done {
-      text-decoration: line-through;
-      color: $mainLight;
-    }
   }
   &__input {
     background: white;

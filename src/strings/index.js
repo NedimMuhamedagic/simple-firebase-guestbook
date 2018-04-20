@@ -5,13 +5,12 @@ export const en = {
       appName: 'GUEST BOOK',
       postText: 'supported by React/Redux/Firebase',
     },
-    USER: {
-      add: 'Add',
-      clear: 'Clear',
-      done: 'Done',
-      delete: 'Delete',
-      confirm: 'Confirm',
-      cancel: 'Cancel',
-    },
+  },
+  USER: {
+    add: 'Add',
+    clear: 'Clear',
+    delete: 'Delete',
+    confirm: 'Confirm',
+    cancel: 'Cancel',
   },
 };

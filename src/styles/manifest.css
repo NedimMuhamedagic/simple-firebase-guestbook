@@ -164,9 +164,6 @@ img {
     .User__element:focus {
       background: none;
       outline: none; }
-    .User__element.done {
-      text-decoration: line-through;
-      color: #D62EB2; }
   .User__input {
     background: white;
     border: none;

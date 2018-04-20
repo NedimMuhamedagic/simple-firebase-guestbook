@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { app as appActions } from '../../modules/app/actions';
 import { user as userActions } from '../../modules/user/actions';
+import { en } from '../../strings';
 
 type AddUserProps = {
   appState: Object,
@@ -36,12 +37,12 @@ class AddUser extends Component<AddUserProps> {
         <button
           className="User__action colorAccent"
           onClick={ this.handleSubmit }>
-          Add
+          { en.USER.add }
         </button>
         <button
           className="User__action colorAlt"
           onClick={ this.handleContentClear }>
-          Clear
+          { en.USER.clear }
         </button>
       </div>
     ) : (<div />);

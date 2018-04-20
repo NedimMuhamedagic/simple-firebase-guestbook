@@ -133,11 +133,10 @@ export function* createUserListener(
 }
 
 function* onUpdateUser({ payload }: { payload: Object }): any {
-  const { userId, name, done } = payload;
+  const { userId, name } = payload;
   const users = yield select(getUsers);
   const currentUser = users[userId];
   if ( !!name ) currentUser.name = name;
-  if ( typeof done !== 'undefined' ) currentUser.done = done;
   if ( currentUser ) {
     const updates = {
       [`${userId}`]: currentUser,

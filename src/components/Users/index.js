@@ -23,7 +23,6 @@ class Users extends Component<UsersProps> {
             .reverse()
             .map( (singleUser: Object): ?React$Element<any> => (
               <User
-                done={ singleUser.done }
                 id={ singleUser.id }
                 key={ singleUser.key }
                 name={ singleUser.name }
