@@ -2,14 +2,13 @@
 
 import firebase from 'firebase';
 
-// TODO: [@NedimMuhamedagic] Move this to an .env file
 const config = {
-  apiKey: 'AIzaSyAVWv-PdImLKtzn_jadQZJmdwIfBP2mK3g',
-  authDomain: 'simple-todo-79bec.firebaseapp.com',
-  databaseURL: 'https://simple-todo-79bec.firebaseio.com',
-  projectId: 'simple-todo-79bec',
-  storageBucket: 'simple-todo-79bec.appspot.com',
-  messagingSenderId: '527419872192',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
 
 const instance = firebase.initializeApp(config);

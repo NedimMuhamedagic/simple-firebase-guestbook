@@ -22,6 +22,7 @@
     max-width: 100%;
     @media screen and (min-width: $sm) {
       height: 100vh;
+      overflow-y: scroll;
     }
   }
 }

@@ -122,7 +122,8 @@ img {
     max-width: 100%; }
     @media screen and (min-width: 768px) {
       .App__content {
-        height: 100vh; } }
+        height: 100vh;
+        overflow-y: scroll; } }
 
 .Todos {
   padding: 1rem;
