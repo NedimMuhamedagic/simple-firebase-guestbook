@@ -4,7 +4,7 @@ export const rootDB = new DB();
 export const appDB = new DB({ path: 'app' });
 export const userDB = new DB({ path: 'users' });
 
-export const createToDoRef = (userId: string): DB =>
+export const createUserRef = (userId: string): DB =>
   new DB({ path: `users/${userId}`, keepSynced: true });
 
 export function updateRootDB({ id, args }: Object): any {

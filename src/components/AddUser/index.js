@@ -15,8 +15,18 @@ type AddUserProps = {
   userState: Object
 }
 
-class AddUser extends Component<AddUserProps> {
+type AddUserState = {
+  hasError: boolean,
+  error: string
+}
+
+class AddUser extends Component<AddUserProps, AddUserState> {
   inputRef: HTMLInputElement | null;
+
+  state = {
+    hasError: false,
+    error: '',
+  }
 
   componentDidMount() {
     this.inputRef && this.inputRef.focus();
@@ -24,13 +34,14 @@ class AddUser extends Component<AddUserProps> {
 
   render(): ?React$Element<"div"> {
     const { hasAddedUser, appState: { values: { newUser: { value } } } } = this.props;
+    const { hasError, error } = this.state;
     return !hasAddedUser ? (
       <div className="User">
         <input
           className="User__element User__input"
           onChange={ this.handleContentChange }
           onKeyPress={ this.handleKeyPress }
-          placeholder="Add new user"
+          placeholder={ hasError ? error : 'Add new user' }
           ref={ (ref: HTMLInputElement | null): any => (this.inputRef = ref)  }
           type="text"
           value={ value } />
@@ -65,10 +76,22 @@ class AddUser extends Component<AddUserProps> {
       this.handleSubmit();
     }
   }
+
   handleSubmit = () => {
     const { addUser, appState: { values: { newUser: { value } } } } = this.props;
-    addUser(value);
-    this.inputRef && this.inputRef.focus();
+    if ( value !== '' ) {
+      addUser(value);
+      this.setState({
+        hasError: false,
+        error: '',
+      });
+    } else {
+      this.setState({
+        hasError: true,
+        error: 'Please enter a name',
+      });
+      this.inputRef && this.inputRef.focus();
+    }
   }
 }
 

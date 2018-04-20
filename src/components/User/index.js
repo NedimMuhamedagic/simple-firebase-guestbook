@@ -15,13 +15,19 @@ type UserProps = {
 
 type UserState = {
   editing: boolean,
-  value: string
+  value: string,
+  hasError: boolean,
+  error: string
 }
 
 class User extends Component<UserProps, UserState> {
+  inputRef: HTMLInputElement | null;
+
   state = {
     editing: false,
     value: '',
+    hasError: false,
+    error: '',
   }
 
   componentWillMount() {
@@ -72,13 +78,15 @@ class User extends Component<UserProps, UserState> {
   }
 
   renderEditing = (): React$Element<"div"> => {
-    const { value } = this.state;
+    const { value, hasError, error } = this.state;
     return (
       <div className="User">
         <input
           className="User__element User__input"
           onChange={ this.handleContentChange }
-          placeholder="Add new user"
+          onKeyPress={ this.handleKeyPress }
+          placeholder={ hasError ? error : 'Add new user' }
+          ref={ (ref: HTMLInputElement | null): any => (this.inputRef = ref)  }
           type="text"
           value={ value } />
         <div className="User__actionContainer">
@@ -112,11 +120,25 @@ class User extends Component<UserProps, UserState> {
     this.setState({ value: name, editing: false });
   }
 
+  handleKeyPress = (e: SyntheticKeyboardEvent<any>) => {
+    if ( e.key === 'Enter' ) {
+      this.handleSubmit();
+    }
+  }
+
   handleSubmit = () => {
     const { value } = this.state;
-    const { updateUser, id } = this.props;
-    updateUser({ name: value, userId: id });
-    this.handleCancelEditing();
+    if ( value !== '' ) {
+      const { updateUser, id } = this.props;
+      updateUser({ name: value, userId: id });
+      this.setState({ editing: false });
+    } else {
+      this.setState({
+        hasError: true,
+        error: 'Please enter a name',
+      });
+      this.inputRef && this.inputRef.focus();
+    }
   }
 
   handleDeleteUser = () => {
