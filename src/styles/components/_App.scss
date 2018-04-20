@@ -1,12 +1,15 @@
 .App {
-  @extend #flex-row-end-start;
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-
+  @extend #flex-row-end-start;
+  @media screen and (max-width: $sm) {
+    display: block;
+  }
   &__details {
     flex: 3;
     padding: $spacing;
+    max-width: 100%;
 
     h1 {
       @extend #fontExtra;
@@ -16,6 +19,9 @@
 
   &__content {
     flex: 7;
-    height: 100vh;
+    max-width: 100%;
+    @media screen and (min-width: $sm) {
+      height: 100vh;
+    }
   }
 }

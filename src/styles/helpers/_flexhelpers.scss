@@ -21,7 +21,9 @@
 }
 
 #flex-row-end-start {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start
+  @media screen and (min-width: $sm) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
 }

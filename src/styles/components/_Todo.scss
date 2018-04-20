@@ -9,27 +9,30 @@
   margin: 0;
   transition: $mainTransition;
   box-sizing: border-box;
-  height: 39px;
+  // height: 39px;
 }
 
 .Todo {
   @extend #flex-row-start;
   position: relative;
   margin-bottom: $smallSpacing;
-  max-width: 40rem;
+  max-width: calc( 100vw - 1rem );
   border: none;
   background: none;
   padding: 0;
   cursor: pointer;
+  @media screen and (min-width: 768px) {
+    max-width: 40rem;
+  }
   &:hover, &:focus {
     color: $grey;
     outline: none;
   }
   &__element {
     @extend #todoStyle;
-    max-width: 28rem;
     width: 100%;
     outline: none;
+    max-width: 28rem;
     &:focus {
       background: none;
       outline: none;
@@ -64,6 +67,9 @@
   &__action {
     @extend #todoStyle;
     cursor: pointer;
+    @media screen and (max-width: $sm) {
+      font-size: $fontSmall;
+    }
     &:focus, &:hover {
       outline: none;
       color: $grey;

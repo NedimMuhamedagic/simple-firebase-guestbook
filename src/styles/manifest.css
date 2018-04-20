@@ -62,7 +62,7 @@ h1 {
 
 h2 {
   font-weight: 900;
-  font-size: 1.8rem; }
+  font-size: 1.7rem; }
 
 h3 {
   font-weight: 900;
@@ -100,27 +100,36 @@ img {
   align-items: center;
   justify-content: flex-start; }
 
-#flex-row-end-start, .App {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start; }
+@media screen and (min-width: 768px) {
+  #flex-row-end-start, .App {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start; } }
 
 .App {
   height: 100vh;
   width: 100vw;
   box-sizing: border-box; }
+  @media screen and (max-width: 768px) {
+    .App {
+      display: block; } }
   .App__details {
     flex: 3;
-    padding: 1rem; }
+    padding: 1rem;
+    max-width: 100%; }
   .App__content {
     flex: 7;
-    height: 100vh; }
+    max-width: 100%; }
+    @media screen and (min-width: 768px) {
+      .App__content {
+        height: 100vh; } }
 
 .Todos {
   padding: 1rem;
   height: 100vh;
   box-sizing: border-box;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  max-width: 100vw; }
 
 #todoStyle, .Todo__element, .Todo__action {
   font-weight: 300;
@@ -131,24 +140,26 @@ img {
   line-height: 1.2rem;
   margin: 0;
   transition: all 0.3s ease;
-  box-sizing: border-box;
-  height: 39px; }
+  box-sizing: border-box; }
 
 .Todo {
   position: relative;
   margin-bottom: 0.5rem;
-  max-width: 40rem;
+  max-width: calc( 100vw - 1rem);
   border: none;
   background: none;
   padding: 0;
   cursor: pointer; }
+  @media screen and (min-width: 768px) {
+    .Todo {
+      max-width: 40rem; } }
   .Todo:hover, .Todo:focus {
     color: #888888;
     outline: none; }
   .Todo__element {
-    max-width: 28rem;
     width: 100%;
-    outline: none; }
+    outline: none;
+    max-width: 28rem; }
     .Todo__element:focus {
       background: none;
       outline: none; }
@@ -171,6 +182,9 @@ img {
       outline: none; }
   .Todo__action {
     cursor: pointer; }
+    @media screen and (max-width: 768px) {
+      .Todo__action {
+        font-size: 0.8rem; } }
     .Todo__action:focus, .Todo__action:hover {
       outline: none;
       color: #888888; }
