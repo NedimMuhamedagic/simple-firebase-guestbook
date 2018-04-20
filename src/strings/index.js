@@ -5,7 +5,7 @@ export const en = {
       appName: 'GUEST BOOK',
       postText: 'supported by React/Redux/Firebase',
     },
-    TODO: {
+    USER: {
       add: 'Add',
       clear: 'Clear',
       done: 'Done',

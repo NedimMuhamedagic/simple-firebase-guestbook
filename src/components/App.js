@@ -33,7 +33,7 @@ class App extends Component<AppProps> {
 
 const mapDispatchToProps = (dispatch: Function): Object => {
   return {
-    initApp: ( status: boolean ): Function => dispatch( appActions.initApp( status ) ),
+    initApp: ( status: boolean ): Function => dispatch( appActions.initApp( { loaded: status } ) ),
   };
 };
 
