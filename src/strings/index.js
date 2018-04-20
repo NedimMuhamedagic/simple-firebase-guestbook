@@ -2,7 +2,7 @@ export const en = {
   APP: {
     heading: {
       intro: 'Awesome',
-      appName: 'TODO App',
+      appName: 'GUEST BOOK',
       postText: 'supported by React/Redux/Firebase',
     },
     TODO: {

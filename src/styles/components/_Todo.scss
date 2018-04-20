@@ -1,4 +1,4 @@
-#todoStyle {
+#userStyle {
   @extend #flex-row-center-start;
   font-weight: 300;
   background: none;
@@ -12,7 +12,7 @@
   // height: 39px;
 }
 
-.Todo {
+.User {
   @extend #flex-row-start;
   position: relative;
   margin-bottom: $smallSpacing;
@@ -29,7 +29,7 @@
     outline: none;
   }
   &__element {
-    @extend #todoStyle;
+    @extend #userStyle;
     width: 100%;
     outline: none;
     max-width: 28rem;
@@ -65,7 +65,7 @@
   }
 
   &__action {
-    @extend #todoStyle;
+    @extend #userStyle;
     cursor: pointer;
     @media screen and (max-width: $sm) {
       font-size: $fontSmall;

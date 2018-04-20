@@ -9,7 +9,7 @@ import App from './components/App';
 
 sagaMiddleware.run(rootSaga);
 
-class ToDo extends Component<any> { // eslint-disable-line
+class UserList extends Component<any> { // eslint-disable-line
   render(): Store {
     return (
       <Provider store={ store }>
@@ -18,4 +18,4 @@ class ToDo extends Component<any> { // eslint-disable-line
     );
   }
 }
-export default ToDo;
+export default UserList;

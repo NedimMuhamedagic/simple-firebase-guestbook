@@ -1,4 +1,4 @@
-## Simple Todo app
+## Simple User app
 # Stack
 > - ReactJS
 > Redux, Redux Saga, Babel, Eslint, Flow, Sass

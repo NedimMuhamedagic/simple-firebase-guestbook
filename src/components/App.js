@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { app as appActions } from '../modules/app/actions';
 import { en } from '../strings';
 
-import Todos from './Todos/index.js';
+import Users from './Users/index.js';
 
 type AppProps = {
   initApp: Function
@@ -12,7 +12,7 @@ type AppProps = {
 
 class App extends Component<AppProps> {
   componentDidMount() {
-    this.props.initApp( true );
+    this.props.initApp({ loaded: true });
   }
 
   render(): ?React$Element<any> {
@@ -24,7 +24,7 @@ class App extends Component<AppProps> {
           <h2>{ en.APP.heading.postText }</h2>
         </div>
         <div className="App__content">
-          <Todos />
+          <Users />
         </div>
       </div>
     );

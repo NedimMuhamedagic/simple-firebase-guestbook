@@ -4,12 +4,13 @@ export const APP = {
   INIT: 'APP_INIT',
   SET_FORM_FIELD: 'SET_FORM_FIELD',
   CLEAR_FORM_FIELD: 'CLEAR_FORM_FIELD',
+  SET_ASSIGNED_USER: 'SET_ASSIGNED_USER',
 };
 
 export type AppAction =
   | {
     type: typeof APP.INIT,
-    payload: boolean
+    payload: Object
     }
   | {
       type: typeof APP.SET_FORM_FIELD,
@@ -18,10 +19,14 @@ export type AppAction =
   | {
       type: typeof APP.CLEAR_FORM_FIELD,
       payload: string
+    }
+  | {
+      type: typeof APP.SET_ASSIGNED_USER,
+      payload: string
     };
 
 export const app = {
-  initApp: (payload: boolean): AppAction => ({
+  initApp: (payload: Object): AppAction => ({
     type: APP.INIT,
     payload,
   }),
@@ -32,5 +37,9 @@ export const app = {
   setFormField: (value: string, fieldId: string): AppAction => ({
     type: APP.SET_FORM_FIELD,
     payload: { value, fieldId },
+  }),
+  setAssignedUser: (value: string): AppAction => ({
+    type: APP.SET_ASSIGNED_USER,
+    payload: value,
   }),
 };

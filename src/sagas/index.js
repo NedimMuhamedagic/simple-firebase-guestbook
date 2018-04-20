@@ -1,11 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 
 import appSagas from '../modules/app/saga';
-import todoSagas from '../modules/todo/saga';
+import userSagas from '../modules/user/saga';
 
 const sagas = [
   ...appSagas,
-  ...todoSagas,
+  ...userSagas,
 ];
 
 /*

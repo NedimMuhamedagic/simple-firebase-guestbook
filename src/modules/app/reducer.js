@@ -2,13 +2,15 @@
 import { APP,  type AppAction } from './actions';
 type State = {
   loaded: boolean,
-  values: Object
+  values: Object,
+  user: string
 };
 
 const INITIAL_STATE = {
   loaded: false,
+  user: '',
   values: {
-    newTodo: {
+    newUser: {
       value: '',
     },
   },
@@ -19,7 +21,8 @@ export default (state: Object = INITIAL_STATE, action: AppAction): State => {
   case APP.INIT:
     return {
       ...state,
-      loaded: action.payload,
+      loaded: action.payload.loaded,
+      user: action.payload.user,
     };
   case APP.SET_FORM_FIELD:
     return {
@@ -40,6 +43,11 @@ export default (state: Object = INITIAL_STATE, action: AppAction): State => {
           value: '',
         },
       },
+    };
+  case APP.SET_ASSIGNED_USER:
+    return {
+      ...state,
+      user: action.payload,
     };
   default:
     return state;

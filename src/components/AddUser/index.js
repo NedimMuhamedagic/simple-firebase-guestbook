@@ -3,17 +3,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { app as appActions } from '../../modules/app/actions';
-import { todo as todoActions } from '../../modules/todo/actions';
+import { user as userActions } from '../../modules/user/actions';
 
-type AddTodoProps = {
+type AddUserProps = {
   appState: Object,
-  addTodo: Function,
+  addUser: Function,
   setFormField: Function,
   clearFormField: Function,
-  todoState: Object
+  hasAddedUser: boolean,
+  userState: Object
 }
 
-class AddTodo extends Component<AddTodoProps> {
+class AddUser extends Component<AddUserProps> {
   inputRef: HTMLInputElement | null;
 
   componentDidMount() {
@@ -21,40 +22,40 @@ class AddTodo extends Component<AddTodoProps> {
   }
 
   render(): ?React$Element<"div"> {
-    const { appState: { values: { newTodo: { value } } } } = this.props;
-    return (
-      <div className="Todo">
+    const { hasAddedUser, appState: { values: { newUser: { value } } } } = this.props;
+    return !hasAddedUser ? (
+      <div className="User">
         <input
-          className="Todo__element Todo__input"
+          className="User__element User__input"
           onChange={ this.handleContentChange }
           onKeyPress={ this.handleKeyPress }
-          placeholder="Add new todo"
+          placeholder="Add new user"
           ref={ (ref: HTMLInputElement | null): any => (this.inputRef = ref)  }
           type="text"
           value={ value } />
         <button
-          className="Todo__action colorAccent"
+          className="User__action colorAccent"
           onClick={ this.handleSubmit }>
           Add
         </button>
         <button
-          className="Todo__action colorAlt"
+          className="User__action colorAlt"
           onClick={ this.handleContentClear }>
           Clear
         </button>
       </div>
-    );
+    ) : (<div />);
   }
 
   handleContentChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
     const { target: { value } } = event;
     const { setFormField } = this.props;
-    setFormField(value, 'newTodo');
+    setFormField(value, 'newUser');
   }
 
   handleContentClear = () => {
     const { clearFormField } = this.props;
-    clearFormField('newTodo');
+    clearFormField('newUser');
     this.inputRef && this.inputRef.focus();
   }
 
@@ -64,8 +65,8 @@ class AddTodo extends Component<AddTodoProps> {
     }
   }
   handleSubmit = () => {
-    const { addTodo, appState: { values: { newTodo: { value } } } } = this.props;
-    addTodo(value);
+    const { addUser, appState: { values: { newUser: { value } } } } = this.props;
+    addUser(value);
     this.inputRef && this.inputRef.focus();
   }
 }
@@ -77,8 +78,8 @@ const mapStateToProps = ({ appState }: Object): Object => ({
 export default connect(
   mapStateToProps,
   {
-    addTodo: todoActions.addTodo,
+    addUser: userActions.addUser,
     clearFormField: appActions.clearFormField,
     setFormField: appActions.setFormField,
   },
-)(AddTodo);
+)(AddUser);
